@@ -38,13 +38,21 @@ func (s *Service) DeleteUser(ctx context.Context, userID uuid.UUID) error {
 	return nil
 }
 
-func (s *Service) FindUser(ctx context.Context, userID uuid.UUID) (*domain.User, error) {
+func (s *Service) FindUser(ctx context.Context, userID uuid.UUID) (*domain.UserResponse, error) {
 	result, err := s.userRepository.Find(ctx, userID)
 	if err != nil {
 		return nil, err
 	}
 
-	return result, nil
+	userResponse := &domain.UserResponse{}
+
+	userResponse.ID = result.ID
+	userResponse.Email = result.Email
+	userResponse.Username = result.Username
+	userResponse.Age = s.ageParser(result.Birthdate)
+	userResponse.Base = result.Base
+
+	return userResponse, nil
 }
 
 func (s *Service) UpdateUsers(ctx context.Context, request domain.User, userID uuid.UUID) (*domain.UserResponse, error) {
