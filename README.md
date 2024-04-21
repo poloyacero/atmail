@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project.
 
 ### Prerequisites
 
@@ -42,4 +42,4 @@ To be continue
 
 ### API documentation
 
-Please check file named "Testing.postman_collection.json"
+Please check the file named "Testing.postman_collection.json"
