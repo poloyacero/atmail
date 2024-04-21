@@ -1,0 +1,15 @@
+START TRANSACTION;
+
+CREATE TABLE IF NOT EXISTS `roles`(
+	id VARCHAR(36) PRIMARY KEY,
+    user_id VARCHAR(36) NOT NULL,
+    role VARCHAR(255) DEFAULT NULL,
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	deleted_at TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (`user_id`) REFERENCES users (`id`)
+);
+
+CREATE INDEX `idx_roles_id_deleted_at` ON `roles` (`id`, `deleted_at`);
+
+COMMIT;
