@@ -61,7 +61,6 @@ func (m *Middleware) Unique(fl validator.FieldLevel) bool {
 
 func (m *Middleware) UpdateMiddleware() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		// Perform authentication before calling the next middleware function
 		request := domain.UpdateUserRequest{}
 
 		err := ctx.ShouldBindJSON(&request)

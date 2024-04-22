@@ -31,7 +31,7 @@ func (h *userHandler) Create(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, result)
+	ctx.JSON(http.StatusCreated, result)
 }
 
 func (h *userHandler) Read(ctx *gin.Context) {
@@ -76,9 +76,9 @@ func (h *userHandler) Update(ctx *gin.Context) {
 		return
 	}
 
-	request := domain.User{}
 	user := ctx.MustGet("user").(domain.UpdateUserRequest)
 
+	request := domain.User{}
 	request.ID = uuid.New().String()
 	request.Birthdate = user.Birthdate
 

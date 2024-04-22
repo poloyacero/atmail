@@ -50,7 +50,6 @@ type UserRepository interface {
 	Save(ctx context.Context, model *User) (*User, error)
 	Update(ctx context.Context, model *User) (*User, error)
 	Find(ctx context.Context, userID uuid.UUID) (*User, error)
-	FindBy(ctx context.Context, data string) (*User, error)
 	Delete(ctx context.Context, userID uuid.UUID) error
 	IsExist(ctx context.Context, dataType, data string) bool
 }

@@ -52,17 +52,6 @@ func (u *userRepository) Find(ctx context.Context, userID uuid.UUID) (*domain.Us
 	return modelSource, nil
 }
 
-func (u *userRepository) FindBy(ctx context.Context, data string) (*domain.User, error) {
-	modelSource := &domain.User{}
-
-	err := u.db.WithContext(ctx).Where("email = ?", data).First(modelSource).Error
-	if err != nil {
-		return nil, err
-	}
-
-	return modelSource, nil
-}
-
 func (u *userRepository) Delete(ctx context.Context, userID uuid.UUID) error {
 	user, err := u.Find(ctx, userID)
 	if err != nil {
